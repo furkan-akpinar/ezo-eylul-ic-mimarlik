@@ -240,24 +240,41 @@ button { color: inherit; }
 .fact strong { display: block; color: var(--gold); font-family: "Playfair Display", serif; font-size: 3rem; font-weight: 500; }
 .fact span { color: var(--muted); font-size: .7rem; letter-spacing: .1em; text-transform: uppercase; }
 
-.services-grid { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid var(--line); border-left: 1px solid var(--line); }
-.service-card { position: relative; min-height: 380px; padding: 42px 32px; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); overflow: hidden; }
-.service-card::before { position: absolute; inset: 100% 0 0; content: ""; background: var(--gold); transition: .4s ease; }
-.service-card:hover::before { inset: 0; }
-.service-card > * { position: relative; z-index: 1; }
-.service-no { color: var(--gold); font-family: "Playfair Display", serif; transition: .4s; }
-.service-card h3 { margin-top: 90px; font-family: "Playfair Display", serif; font-size: 2rem; font-weight: 500; line-height: 1.15; }
-.service-card p { margin-top: 18px; color: rgba(255,255,255,.56); font-size: .9rem; transition: .4s; }
-.service-icon { position: absolute; right: 28px; bottom: 24px; color: rgba(255,255,255,.14); font-size: 3.6rem; transition: .4s; }
-.service-card:hover { color: var(--ink); }
-.service-card:hover .service-no,
-.service-card:hover p { color: rgba(11,11,10,.72); }
-.service-card:hover .service-icon { color: rgba(11,11,10,.18); transform: rotate(-8deg) scale(1.1); }
+.services-intro { max-width: 760px; margin-bottom: 52px; color: var(--muted); font-size: 1.02rem; }
+.services-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
+.service-card { position: relative; min-height: 540px; border: 1px solid var(--line); overflow: hidden; background: var(--ink-soft); isolation: isolate; }
+.service-card::after { position: absolute; z-index: 1; inset: 0; content: ""; background: linear-gradient(180deg, rgba(8,8,7,.08) 0%, rgba(8,8,7,.28) 42%, rgba(8,8,7,.96) 100%); transition: background .45s ease; }
+.service-media { position: absolute; inset: 0; }
+.service-media img { width: 100%; height: 100%; object-fit: cover; transition: transform .8s cubic-bezier(.2,.8,.2,1), filter .45s ease; }
+.service-content { position: relative; z-index: 2; display: flex; min-height: 540px; padding: 30px; flex-direction: column; }
+.service-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 18px; }
+.service-no { display: grid; width: 54px; height: 54px; border: 1px solid rgba(255,255,255,.48); border-radius: 50%; place-items: center; color: var(--white); background: rgba(11,11,10,.28); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); font-family: "Playfair Display", serif; font-size: 1rem; }
+.service-icon { display: grid; width: 54px; height: 54px; border: 1px solid rgba(255,255,255,.28); border-radius: 50%; place-items: center; color: var(--gold-light); background: rgba(11,11,10,.35); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); font-size: 1.2rem; transition: .4s ease; }
+.service-card h3 { max-width: 490px; margin-top: auto; font-family: "Playfair Display", serif; font-size: clamp(2rem, 3vw, 3.15rem); font-weight: 500; line-height: 1.04; }
+.service-card p { max-width: 570px; margin-top: 17px; color: rgba(255,255,255,.73); font-size: .92rem; }
+.service-card-link { display: inline-flex; width: fit-content; margin-top: 23px; padding-bottom: 4px; border-bottom: 1px solid var(--gold); align-items: center; gap: 10px; color: var(--gold-light); font-size: .67rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
+.service-card:hover::after { background: linear-gradient(180deg, rgba(8,8,7,.02) 0%, rgba(8,8,7,.2) 38%, rgba(8,8,7,.91) 100%); }
+.service-card:hover .service-media img { filter: saturate(1.08); transform: scale(1.055); }
+.service-card:hover .service-icon { border-color: var(--gold); color: var(--ink); background: var(--gold); transform: rotate(-8deg); }
+.service-card-link:hover { color: var(--white); }
 .service-detail-list { border-top: 1px solid var(--line); }
-.service-detail { display: grid; grid-template-columns: 90px .9fr 1.2fr; gap: 34px; padding: 40px 0; border-bottom: 1px solid var(--line); }
+.service-detail { display: grid; grid-template-columns: 70px .85fr 1.25fr; gap: 38px; padding: 44px 0; border-bottom: 1px solid var(--line); align-items: start; }
 .service-detail > span { color: var(--gold); font-family: "Playfair Display", serif; font-size: 1.35rem; }
 .service-detail h2 { font-family: "Playfair Display", serif; font-size: clamp(1.8rem, 3vw, 2.8rem); font-weight: 500; }
-.service-detail p { color: var(--muted); }
+.service-detail-content p { color: var(--muted); }
+.service-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 19px; list-style: none; }
+.service-tags li { padding: 7px 11px; border: 1px solid var(--line); color: rgba(255,255,255,.72); font-size: .62rem; font-weight: 700; letter-spacing: .07em; text-transform: uppercase; }
+.package-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.package-card { position: relative; display: flex; min-height: 420px; padding: 36px; border: 1px solid var(--line); flex-direction: column; background: rgba(255,255,255,.018); transition: border-color .3s ease, transform .3s ease, background .3s ease; }
+.package-card:hover { border-color: rgba(201,168,106,.7); background: rgba(201,168,106,.055); transform: translateY(-6px); }
+.package-card.featured { border-color: var(--gold); background: rgba(201,168,106,.07); }
+.package-label { color: var(--gold); font-size: .65rem; font-weight: 700; letter-spacing: .13em; text-transform: uppercase; }
+.package-card h3 { margin-top: 24px; font-family: "Playfair Display", serif; font-size: clamp(1.9rem, 3vw, 2.7rem); font-weight: 500; line-height: 1.1; }
+.package-card > p { margin-top: 18px; color: var(--muted); font-size: .9rem; }
+.package-list { display: grid; gap: 11px; margin-top: 28px; list-style: none; }
+.package-list li { display: flex; align-items: flex-start; gap: 10px; color: rgba(255,255,255,.75); font-size: .82rem; }
+.package-list i { margin-top: 7px; color: var(--gold); font-size: .52rem; }
+.package-card .text-link { margin-top: auto; align-self: flex-start; }
 
 .project-filters { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 40px; }
 .filter-btn { padding: 10px 17px; border: 1px solid var(--line); background: transparent; cursor: pointer; font-size: .68rem; font-weight: 700; letter-spacing: .09em; text-transform: uppercase; transition: .25s; }
@@ -361,6 +378,8 @@ button { color: inherit; }
 .footer-nav { display: flex; flex-wrap: wrap; gap: 22px; list-style: none; }
 .footer-nav a { font-size: .66rem; font-weight: 700; letter-spacing: .09em; text-transform: uppercase; }
 .footer-nav a:hover { color: var(--gold); }
+.footer-credit { margin-top: 5px; font-size: .7rem; }
+.footer-credit strong { color: var(--gold); font-weight: 600; }
 .to-top { position: fixed; z-index: 900; right: 24px; bottom: 24px; display: grid; width: 48px; height: 48px; border: 0; place-items: center; opacity: 0; color: var(--ink); background: var(--gold); box-shadow: 0 12px 30px rgba(0,0,0,.24); cursor: pointer; pointer-events: none; transform: translateY(15px); transition: .3s; }
 .to-top.show { opacity: 1; pointer-events: auto; transform: none; }
 .reveal { opacity: 0; transform: translateY(30px); transition: opacity .7s ease, transform .7s ease; }
@@ -399,7 +418,9 @@ button { color: inherit; }
   .nav-links a { display: block; padding: 15px 0; }
   .menu-toggle { position: relative; z-index: 1002; display: flex; margin-left: auto; }
   .hero-stats { width: 48vw; }
-  .services-grid { grid-template-columns: repeat(2, 1fr); }
+  .service-card, .service-content { min-height: 490px; }
+  .package-grid { grid-template-columns: 1fr 1fr; }
+  .package-card:last-child { grid-column: 1 / -1; }
   .journal-grid { grid-template-columns: 1fr 1fr; }
   .journal-card:last-child { grid-column: 1 / -1; }
 }
@@ -407,6 +428,7 @@ button { color: inherit; }
 @media (max-width: 800px) {
   :root { --container: min(calc(100% - 32px), 680px); }
   .section { padding: 84px 0; }
+  .services-grid { grid-template-columns: 1fr; }
   .section-head, .about-grid, .contact-grid, .detail-intro, .article-shell { grid-template-columns: 1fr; gap: 34px; }
   .home-hero { padding-bottom: 190px; }
   .home-hero h1 { font-size: clamp(2.9rem, 12.5vw, 5rem); line-height: .96; }
@@ -419,8 +441,8 @@ button { color: inherit; }
   .project-card:nth-child(n) .project-thumb img { height: 70vw; max-height: 540px; }
   .process-row { grid-template-columns: 55px 1fr 36px; gap: 18px; }
   .process-row p { grid-column: 2 / -1; }
-  .service-detail { grid-template-columns: 55px 1fr; }
-  .service-detail p { grid-column: 2; }
+  .service-detail { grid-template-columns: 55px 1fr; gap: 18px 28px; }
+  .service-detail-content { grid-column: 2; }
   .deliverables { grid-template-columns: 1fr 1fr; }
   .quote-section { background-attachment: scroll; }
   .contact-form { padding: 34px 24px; }
@@ -451,10 +473,17 @@ button { color: inherit; }
   .page-hero { min-height: 520px; }
   .page-hero h1 { font-size: clamp(2.65rem, 14vw, 4.5rem); }
   .about-media { padding: 0 44px 44px 0; }
-  .values, .services-grid, .journal-grid, .deliverables { grid-template-columns: 1fr; }
+  .values, .services-grid, .journal-grid, .deliverables, .package-grid { grid-template-columns: 1fr; }
+  .package-card:last-child { grid-column: auto; }
   .facts-grid { grid-template-columns: 1fr; }
-  .service-card { min-height: 300px; }
-  .service-card h3 { margin-top: 55px; }
+  .services-grid { gap: 16px; }
+  .service-card, .service-content { min-height: 480px; }
+  .service-content { padding: 22px; }
+  .service-card h3 { font-size: clamp(1.95rem, 9vw, 2.65rem); }
+  .service-no, .service-icon { width: 46px; height: 46px; }
+  .service-detail { grid-template-columns: 42px 1fr; }
+  .service-detail-content { grid-column: 1 / -1; }
+  .package-card { min-height: 0; }
   .project-meta { align-items: flex-start; flex-direction: column; gap: 5px; }
   .contact-form { grid-template-columns: 1fr; }
   .field.full, .form-foot { grid-column: auto; }
@@ -482,12 +511,214 @@ button { color: inherit; }
   <header class="site-header inner-header" id="siteHeader"><div class="container nav-wrap"><a class="brand" href="index.html" aria-label="Ezo Eylül Sağır ana sayfa"><span class="brand-mark">E</span><span><strong>Ezo Eylül Sağır</strong><small>İÇ MİMARLIK</small></span></a><button class="menu-toggle" id="menuToggle" type="button" aria-label="Menüyü aç" aria-expanded="false" aria-controls="navLinks"><i class="fa-solid fa-bars"></i></button><nav aria-label="Ana menü"><ul class="nav-links" id="navLinks"><li><a href="index.html" data-nav="home">Ana Sayfa</a></li><li><a href="about.html" data-nav="about">Hakkımda</a></li><li><a href="services.html" data-nav="services">Hizmetler</a></li><li><a href="projects.html" data-nav="projects">Projeler</a></li><li><a href="process.html" data-nav="process">Süreç</a></li><li><a href="blog.html" data-nav="blog">Blog</a></li><li><a href="contact.html" data-nav="contact">İletişim</a></li></ul></nav></div></header>
 
   <main id="main-content">
-    <section class="page-hero hero-services"><div class="container page-hero-content"><span class="eyebrow">Hizmetler</span><h1>Tasarımın her aşamasında yanınızdayız.</h1><p>İlk fikirden uygulama ve son dokunuşlara kadar projenin ihtiyacına göre ölçeklenen profesyonel iç mimarlık hizmetleri.</p></div></section>
-    <section class="section"><div class="container"><div class="services-grid reveal"><article class="service-card"><span class="service-no">01</span><h3>İç Mimari Tasarım</h3><p>Kullanım alışkanlıkları ve mekânsal potansiyel üzerinden geliştirilen özgün tasarım.</p><i class="service-icon fa-solid fa-compass-drafting"></i></article><article class="service-card"><span class="service-no">02</span><h3>3D Görselleştirme</h3><p>Renk, malzeme ve ışık kararlarını uygulama öncesinde gerçekçi olarak değerlendirme.</p><i class="service-icon fa-solid fa-cube"></i></article><article class="service-card"><span class="service-no">03</span><h3>Uygulama Projesi</h3><p>Sahaya ve üretime yön veren teknik planlar, detaylar ve özel mobilya çizimleri.</p><i class="service-icon fa-solid fa-ruler-combined"></i></article><article class="service-card"><span class="service-no">04</span><h3>Proje Takibi</h3><p>Tedarik, üretim ve saha ekiplerinin tasarım kararlarına göre koordinasyonu.</p><i class="service-icon fa-solid fa-helmet-safety"></i></article></div></div></section>
-    <section class="section section-alt"><div class="container"><div class="section-head reveal"><div><span class="eyebrow">Kapsam</span><h2 class="section-title">İhtiyacınıza göre esnek hizmet modeli.</h2></div><p class="section-copy">Yalnızca tasarım danışmanlığı alabilir ya da projelendirme, satın alma ve saha koordinasyonunu kapsayan uçtan uca bir süreç tercih edebilirsiniz.</p></div><div class="service-detail-list reveal"><article class="service-detail"><span>01</span><h2>Konsept ve Mekân Planlama</h2><p>İhtiyaç programı, dolaşım, mobilya yerleşimi, stil, renk ve malzeme kararlarını içeren tasarım omurgası hazırlanır.</p></article><article class="service-detail"><span>02</span><h2>Teknik Projelendirme</h2><p>Uygulama planları, duvar görünüşleri, elektrik ve aydınlatma yerleşimi, ıslak hacim ve sabit mobilya detayları oluşturulur.</p></article><article class="service-detail"><span>03</span><h2>Malzeme ve Ürün Seçimi</h2><p>Zemin, duvar, aydınlatma, mobilya, tekstil ve aksesuar seçenekleri bütçe ve tasarım bütünlüğüne göre belirlenir.</p></article><article class="service-detail"><span>04</span><h2>Uygulama ve Saha Kontrolü</h2><p>İmalat ve montaj süreçleri takip edilir; sahadaki kararların onaylı tasarım ve detaylara uygunluğu düzenli olarak kontrol edilir.</p></article></div></div></section>
-    <section class="cta-band"><div class="container cta-wrap"><h2>Hangi hizmetin projenize uygun olduğunu konuşalım.</h2><a class="btn" href="contact.html">Teklif İsteyin <i class="fa-solid fa-arrow-right"></i></a></div></section>
+    <section class="page-hero hero-services">
+      <div class="container page-hero-content">
+        <span class="eyebrow">Hizmetler</span>
+        <h1>Fikirden yaşanabilir mekâna.</h1>
+        <p>İhtiyaç analizinden konsept tasarıma, teknik projeden uygulama kontrolüne kadar her aşamayı estetik, işlev ve bütçe dengesiyle yönetiyoruz.</p>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="ana-hizmetler-baslik">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <span class="eyebrow">Neler Yapıyoruz?</span>
+            <h2 class="section-title" id="ana-hizmetler-baslik">Mekânın tüm katmanlarını birlikte tasarlıyoruz.</h2>
+          </div>
+          <p class="section-copy">Konut, ofis, mağaza, kafe ve diğer ticari mekânlarda; kullanıcı ihtiyaçlarını teknik gerekliliklerle birleştiren bütüncül iç mimarlık hizmetleri sunuyoruz.</p>
+        </div>
+
+        <div class="services-grid reveal">
+          <article class="service-card">
+            <div class="service-media"><img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&amp;fit=crop&amp;w=1400&amp;q=86" alt="İç mimarın proje alanında ölçüm ve keşif çalışması" loading="lazy"></div>
+            <div class="service-content"><div class="service-top"><span class="service-no">01</span><i class="service-icon fa-solid fa-magnifying-glass-chart" aria-hidden="true"></i></div><h3>İhtiyaç Analizi &amp; Keşif</h3><p>Mekânın ölçüleri, mevcut koşulları, kullanıcı alışkanlıkları, öncelikleri ve bütçe hedefleri analiz edilir.</p><a class="service-card-link" href="#hizmet-01">Detaylı Kapsam <i class="fa-solid fa-arrow-down" aria-hidden="true"></i></a></div>
+          </article>
+
+          <article class="service-card">
+            <div class="service-media"><img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&amp;fit=crop&amp;w=1400&amp;q=86" alt="Konsept tasarımı tamamlanmış modern yaşam alanı" loading="lazy"></div>
+            <div class="service-content"><div class="service-top"><span class="service-no">02</span><i class="service-icon fa-solid fa-compass-drafting" aria-hidden="true"></i></div><h3>Konsept Tasarım &amp; Planlama</h3><p>Dolaşım, işlev, mobilya yerleşimi, renk ve malzeme diliyle projenin tasarım kimliği oluşturulur.</p><a class="service-card-link" href="#hizmet-02">Detaylı Kapsam <i class="fa-solid fa-arrow-down" aria-hidden="true"></i></a></div>
+          </article>
+
+          <article class="service-card">
+            <div class="service-media"><img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&amp;fit=crop&amp;w=1400&amp;q=86" alt="Gerçekçi üç boyutlu iç mekân görselleştirmesi" loading="lazy"></div>
+            <div class="service-content"><div class="service-top"><span class="service-no">03</span><i class="service-icon fa-solid fa-cube" aria-hidden="true"></i></div><h3>3D Görselleştirme</h3><p>Mekânın ışık, malzeme, renk ve mobilya kararları uygulama öncesinde gerçekçi görsellerle sunulur.</p><a class="service-card-link" href="#hizmet-03">Detaylı Kapsam <i class="fa-solid fa-arrow-down" aria-hidden="true"></i></a></div>
+          </article>
+
+          <article class="service-card">
+            <div class="service-media"><img src="https://images.unsplash.com/photo-1508450859948-4e04fabaa4ea?auto=format&amp;fit=crop&amp;w=1400&amp;q=86" alt="Mimari teknik çizimler ve uygulama planları" loading="lazy"></div>
+            <div class="service-content"><div class="service-top"><span class="service-no">04</span><i class="service-icon fa-solid fa-ruler-combined" aria-hidden="true"></i></div><h3>Teknik Uygulama Projeleri</h3><p>Sahadaki imalatı eksiksiz tarifleyen plan, kesit, görünüş, elektrik, aydınlatma ve detay çizimleri hazırlanır.</p><a class="service-card-link" href="#hizmet-04">Detaylı Kapsam <i class="fa-solid fa-arrow-down" aria-hidden="true"></i></a></div>
+          </article>
+
+          <article class="service-card">
+            <div class="service-media"><img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&amp;fit=crop&amp;w=1400&amp;q=86" alt="İç mekâna özel tasarlanmış mobilya ve oturma grubu" loading="lazy"></div>
+            <div class="service-content"><div class="service-top"><span class="service-no">05</span><i class="service-icon fa-solid fa-couch" aria-hidden="true"></i></div><h3>Özel Mobilya Tasarımı</h3><p>Mekâna ve kullanıcıya özel sabit mobilya, mutfak, giyinme, depolama ve tamamlayıcı ürünler tasarlanır.</p><a class="service-card-link" href="#hizmet-05">Detaylı Kapsam <i class="fa-solid fa-arrow-down" aria-hidden="true"></i></a></div>
+          </article>
+
+          <article class="service-card">
+            <div class="service-media"><img src="https://images.unsplash.com/photo-1600607688969-a5bfcd646154?auto=format&amp;fit=crop&amp;w=1400&amp;q=86" alt="Doğal malzeme ve katmanlı aydınlatma uygulanan iç mekân" loading="lazy"></div>
+            <div class="service-content"><div class="service-top"><span class="service-no">06</span><i class="service-icon fa-solid fa-swatchbook" aria-hidden="true"></i></div><h3>Malzeme &amp; Aydınlatma</h3><p>Zemin, duvar, tekstil, armatür ve dekoratif aydınlatmalar estetik, dayanıklılık ve bakım kriterleriyle seçilir.</p><a class="service-card-link" href="#hizmet-06">Detaylı Kapsam <i class="fa-solid fa-arrow-down" aria-hidden="true"></i></a></div>
+          </article>
+
+          <article class="service-card">
+            <div class="service-media"><img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&amp;fit=crop&amp;w=1400&amp;q=86" alt="Proje bütçesi, teklif ve satın alma planlaması" loading="lazy"></div>
+            <div class="service-content"><div class="service-top"><span class="service-no">07</span><i class="service-icon fa-solid fa-file-invoice-dollar" aria-hidden="true"></i></div><h3>Bütçe &amp; Satın Alma</h3><p>Metraj, teklif karşılaştırma, ürün ve tedarikçi seçimiyle bütçenin kontrollü ve şeffaf ilerlemesi sağlanır.</p><a class="service-card-link" href="#hizmet-07">Detaylı Kapsam <i class="fa-solid fa-arrow-down" aria-hidden="true"></i></a></div>
+          </article>
+
+          <article class="service-card">
+            <div class="service-media"><img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&amp;fit=crop&amp;w=1400&amp;q=86" alt="İç mimari uygulama sahasında ekip koordinasyonu" loading="lazy"></div>
+            <div class="service-content"><div class="service-top"><span class="service-no">08</span><i class="service-icon fa-solid fa-helmet-safety" aria-hidden="true"></i></div><h3>Uygulama &amp; Saha Koordinasyonu</h3><p>Üretim, tedarik ve montaj ekipleri koordine edilir; uygulamanın onaylı tasarıma uygunluğu takip edilir.</p><a class="service-card-link" href="#hizmet-08">Detaylı Kapsam <i class="fa-solid fa-arrow-down" aria-hidden="true"></i></a></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-alt" aria-labelledby="kapsam-baslik">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <span class="eyebrow">Hizmet Kapsamı</span>
+            <h2 class="section-title" id="kapsam-baslik">Her aşama ölçülebilir ve uygulanabilir.</h2>
+          </div>
+          <p class="section-copy">Projenin ölçeğine göre hizmet kapsamı özelleştirilir. Her adımda kararları netleştiren, sahadaki belirsizlikleri azaltan somut proje çıktıları hazırlanır.</p>
+        </div>
+
+        <div class="service-detail-list reveal">
+          <article class="service-detail" id="hizmet-01">
+            <span>01</span>
+            <h2>Keşif &amp; İhtiyaç Programı</h2>
+            <div class="service-detail-content">
+              <p>Yerinde keşif ve ölçümün ardından kullanıcı sayısı, yaşam veya çalışma alışkanlıkları, depolama ihtiyaçları, teknik kısıtlar, hedef bütçe ve zaman planı belirlenir.</p>
+              <ul class="service-tags"><li>Rölöve</li><li>İhtiyaç Listesi</li><li>Ön Bütçe</li></ul>
+            </div>
+          </article>
+
+          <article class="service-detail" id="hizmet-02">
+            <span>02</span>
+            <h2>Konsept &amp; Yerleşim</h2>
+            <div class="service-detail-content">
+              <p>Alternatif yerleşim planları, moodboard, renk paleti ve referanslarla mekânın işlevsel kurgusu ve görsel karakteri netleştirilir.</p>
+              <ul class="service-tags"><li>Space Planning</li><li>Moodboard</li><li>Renk Paleti</li></ul>
+            </div>
+          </article>
+
+          <article class="service-detail" id="hizmet-03">
+            <span>03</span>
+            <h2>3D Tasarım Sunumu</h2>
+            <div class="service-detail-content">
+              <p>Onaylanan konsept; gerçekçi iç mekân görselleriyle sunulur. Malzeme, ışık, doku, renk ve mobilya kararları uygulama başlamadan birlikte değerlendirilir.</p>
+              <ul class="service-tags"><li>3D Modelleme</li><li>Render</li><li>Revizyon</li></ul>
+            </div>
+          </article>
+
+          <article class="service-detail" id="hizmet-04">
+            <span>04</span>
+            <h2>Uygulama Proje Seti</h2>
+            <div class="service-detail-content">
+              <p>Duvar, zemin, tavan, elektrik, aydınlatma ve ıslak hacim çözümleri; sahada doğru üretim yapılmasını sağlayacak ölçülü plan ve detaylarla hazırlanır.</p>
+              <ul class="service-tags"><li>Plan</li><li>Kesit &amp; Görünüş</li><li>Detay Çizimleri</li></ul>
+            </div>
+          </article>
+
+          <article class="service-detail" id="hizmet-05">
+            <span>05</span>
+            <h2>Sabit &amp; Özel Mobilya</h2>
+            <div class="service-detail-content">
+              <p>Mutfak, banyo, vestiyer, kitaplık, TV ünitesi, çalışma alanı ve diğer özel üretimler için malzeme, ölçü, donanım ve birleşim detayları oluşturulur.</p>
+              <ul class="service-tags"><li>Mobilya Çizimi</li><li>Malzeme</li><li>Üretim Detayı</li></ul>
+            </div>
+          </article>
+
+          <article class="service-detail" id="hizmet-06">
+            <span>06</span>
+            <h2>Malzeme &amp; Ürün Seçimi</h2>
+            <div class="service-detail-content">
+              <p>Kaplama, boya, seramik, taş, kumaş, mobilya, armatür ve aksesuarlar; tasarım bütünlüğü, kullanım yoğunluğu ve bütçeye göre seçilir.</p>
+              <ul class="service-tags"><li>Numune</li><li>Ürün Listesi</li><li>Alternatif Seçim</li></ul>
+            </div>
+          </article>
+
+          <article class="service-detail" id="hizmet-07">
+            <span>07</span>
+            <h2>Metraj &amp; Tedarik Yönetimi</h2>
+            <div class="service-detail-content">
+              <p>İmalat ve ürün kalemleri listelenir, tedarikçi teklifleri karşılaştırılır, sipariş ve teslim tarihleri takip edilerek bütçe sapmaları azaltılır.</p>
+              <ul class="service-tags"><li>Metraj</li><li>Teklif Analizi</li><li>Satın Alma</li></ul>
+            </div>
+          </article>
+
+          <article class="service-detail" id="hizmet-08">
+            <span>08</span>
+            <h2>Şantiye &amp; Uygulama Kontrolü</h2>
+            <div class="service-detail-content">
+              <p>İmalat ve montajlar belirlenen aralıklarla kontrol edilir; ekipler arası koordinasyon sağlanır ve sahadaki kararların projeye uygunluğu raporlanır.</p>
+              <ul class="service-tags"><li>Saha Kontrolü</li><li>Ekip Koordinasyonu</li><li>Teslim</li></ul>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="paketler-baslik">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <span class="eyebrow">Çalışma Modelleri</span>
+            <h2 class="section-title" id="paketler-baslik">Projenize uygun kapsamı birlikte belirleyelim.</h2>
+          </div>
+          <p class="section-copy">Yalnızca profesyonel tasarım desteğinden, uygulama ve satın alma süreçlerini kapsayan uçtan uca hizmete kadar esnek seçenekler sunuyoruz.</p>
+        </div>
+
+        <div class="package-grid reveal">
+          <article class="package-card">
+            <span class="package-label">01 · Başlangıç</span>
+            <h3>Tasarım Danışmanlığı</h3>
+            <p>Belirli bir oda veya karar aşamasında profesyonel yönlendirmeye ihtiyaç duyan projeler için.</p>
+            <ul class="package-list">
+              <li><i class="fa-solid fa-circle"></i> İhtiyaç ve mevcut durum analizi</li>
+              <li><i class="fa-solid fa-circle"></i> Yerleşim ve stil önerileri</li>
+              <li><i class="fa-solid fa-circle"></i> Renk, malzeme ve ürün tavsiyeleri</li>
+            </ul>
+            <a class="text-link" href="contact.html">Bilgi Alın <i class="fa-solid fa-arrow-right"></i></a>
+          </article>
+
+          <article class="package-card featured">
+            <span class="package-label">02 · En Çok Tercih Edilen</span>
+            <h3>Tasarım &amp; Projelendirme</h3>
+            <p>Tasarım kararlarının eksiksiz teknik çizim ve görsellerle uygulamaya hazır hâle getirildiği kapsam.</p>
+            <ul class="package-list">
+              <li><i class="fa-solid fa-circle"></i> Konsept ve yerleşim tasarımı</li>
+              <li><i class="fa-solid fa-circle"></i> 3D görselleştirme</li>
+              <li><i class="fa-solid fa-circle"></i> Uygulama ve mobilya proje seti</li>
+              <li><i class="fa-solid fa-circle"></i> Malzeme ve ürün listeleri</li>
+            </ul>
+            <a class="text-link" href="contact.html">Teklif İsteyin <i class="fa-solid fa-arrow-right"></i></a>
+          </article>
+
+          <article class="package-card">
+            <span class="package-label">03 · Uçtan Uca</span>
+            <h3>Tasarım &amp; Uygulama Yönetimi</h3>
+            <p>Tasarım, projelendirme, bütçe, tedarik ve saha koordinasyonunun tek bütün olarak yönetildiği kapsam.</p>
+            <ul class="package-list">
+              <li><i class="fa-solid fa-circle"></i> Tüm tasarım ve teknik proje hizmetleri</li>
+              <li><i class="fa-solid fa-circle"></i> Metraj, teklif ve satın alma desteği</li>
+              <li><i class="fa-solid fa-circle"></i> Üretim ve saha koordinasyonu</li>
+              <li><i class="fa-solid fa-circle"></i> Son kontrol ve proje teslimi</li>
+            </ul>
+            <a class="text-link" href="contact.html">Projenizi Anlatın <i class="fa-solid fa-arrow-right"></i></a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-band">
+      <div class="container cta-wrap">
+        <h2>Mekânınız için doğru hizmet kapsamını birlikte oluşturalım.</h2>
+        <a class="btn" href="contact.html">Projenizi Anlatın <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+    </section>
   </main>
-  <footer class="site-footer"><div class="container footer-wrap"><p>© <span data-year></span> Ezo Eylül Sağır İç Mimarlık. Tüm hakları saklıdır.</p><ul class="footer-nav"><li><a href="about.html">Hakkımda</a></li><li><a href="services.html">Hizmetler</a></li><li><a href="projects.html">Projeler</a></li><li><a href="contact.html">İletişim</a></li></ul></div></footer><button class="to-top" id="toTop" type="button" aria-label="Sayfanın başına dön"><i class="fa-solid fa-arrow-up"></i></button>
+  <footer class="site-footer"><div class="container footer-wrap"><div><p>© <span data-year></span> Ezo Eylül Sağır İç Mimarlık. Tüm hakları saklıdır.</p><p class="footer-credit">Designed by <strong>Furkan Akpınar</strong></p></div><ul class="footer-nav"><li><a href="about.html">Hakkımda</a></li><li><a href="services.html">Hizmetler</a></li><li><a href="projects.html">Projeler</a></li><li><a href="contact.html">İletişim</a></li></ul></div></footer><button class="to-top" id="toTop" type="button" aria-label="Sayfanın başına dön"><i class="fa-solid fa-arrow-up"></i></button>
 <script>
 /* services.html sayfasının tüm etkileşim kodları */
 (() => {
