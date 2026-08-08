@@ -378,8 +378,8 @@ button { color: inherit; }
 .footer-nav { display: flex; flex-wrap: wrap; gap: 22px; list-style: none; }
 .footer-nav a { font-size: .66rem; font-weight: 700; letter-spacing: .09em; text-transform: uppercase; }
 .footer-nav a:hover { color: var(--gold); }
-.footer-credit { margin-top: 5px; font-size: .7rem; }
-.footer-credit strong { color: var(--gold); font-weight: 600; }
+.footer-credit { margin-left: .45rem; white-space: nowrap; }
+.footer-credit strong { color: var(--gold); font-weight: 700; }
 .to-top { position: fixed; z-index: 900; right: 24px; bottom: 24px; display: grid; width: 48px; height: 48px; border: 0; place-items: center; opacity: 0; color: var(--ink); background: var(--gold); box-shadow: 0 12px 30px rgba(0,0,0,.24); cursor: pointer; pointer-events: none; transform: translateY(15px); transition: .3s; }
 .to-top.show { opacity: 1; pointer-events: auto; transform: none; }
 .reveal { opacity: 0; transform: translateY(30px); transition: opacity .7s ease, transform .7s ease; }
@@ -632,7 +632,8 @@ button { color: inherit; }
       </div>
     </section>
   </main>
-  <footer class="site-footer"><div class="container footer-wrap"><div><p>© <span data-year></span> Ezo Eylül Sağır İç Mimarlık. Tüm hakları saklıdır.</p><p class="footer-credit">Designed by <strong>Furkan Akpınar</strong></p></div><ul class="footer-nav"><li><a href="about.html">Hakkımda</a></li><li><a href="services.html">Hizmetler</a></li><li><a href="projects.html">Projeler</a></li><li><a href="contact.html">İletişim</a></li></ul></div></footer><button class="to-top" id="toTop" type="button" aria-label="Sayfanın başına dön"><i class="fa-solid fa-arrow-up"></i></button>
+  <footer class="site-footer"><div class="container footer-wrap"><p>© <span data-year></span> Ezo Eylül Sağır İç Mimarlık. Tüm hakları saklıdır.<span class="footer-credit"> · Designed by <strong>Furkan Akpınar</strong></span></p><ul class="footer-nav"><li><a href="about.html">Hakkımda</a></li><li><a href="services.html">Hizmetler</a></li><li><a href="projects.html">Projeler</a></li><li><a href="contact.html">İletişim</a></li></ul></div></footer>
+  <button class="to-top" id="toTop" type="button" aria-label="Sayfanın başına dön"><i class="fa-solid fa-arrow-up"></i></button>
 <script>
 /* services.html sayfasının tüm etkileşim kodları */
 (() => {
